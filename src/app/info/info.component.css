@@ -1,0 +1,23 @@
+.container {
+  padding: 10%;
+  text-align: center;
+}
+
+p {
+  width: 70%;
+  padding-left: 15%;
+  padding-top: 10px;
+}
+
+:host {
+  background-color: rgba(255, 253, 253, 0.966);
+  width: 40%;
+  position: fixed;
+  left: 20px;
+  top: 90px;
+  bottom: 140px;
+  z-index: 99;
+  border-radius: 20px;
+  border: 4px solid darkgrey;
+  opacity: 0.6;
+}

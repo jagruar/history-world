@@ -1,0 +1,21 @@
+#map {
+  height: 100vh;
+  z-index: 1;
+}
+
+/* :host {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  height: 90vh;
+} */
+
+.container {
+  background-color: lightgray;
+  height: 60vh;
+  width: 40%;
+  position: fixed;
+  left: 0;
+  top: 20vh;
+  z-index: 99;
+}
