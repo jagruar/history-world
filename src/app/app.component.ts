@@ -1,4 +1,5 @@
 import { Component, NgZone } from "@angular/core";
+import { Topic } from "./models/topic";
 
 @Component({
   selector: "app-root",
@@ -7,12 +8,12 @@ import { Component, NgZone } from "@angular/core";
 })
 export class AppComponent {
   title = "history-world";
-  selectedTopic: string;
+  topicId: string = "topicInfo";
 
   constructor(private ngZone: NgZone) {}
 
   receiveSelected($event) {
-    this.selectedTopic = $event;
+    this.topicId = $event;
     this.ngZone.run(() => true);
   }
 }

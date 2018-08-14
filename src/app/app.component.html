@@ -1,23 +1,6 @@
-<nav>
-    <ul>
-        <li>
-            <a href="default.asp">Home</a>
-        </li>
-        <li>
-            <a href="news.asp">News</a>
-        </li>
-        <li>
-            <a href="contact.asp">Contact</a>
-        </li>
-        <li>
-            <a href="about.asp">About</a>
-        </li>
-    </ul>
-</nav>
-
-
 <app-map (selectedEvent)="receiveSelected($event)"></app-map>
-<app-info [topic]="selectedTopic"></app-info>
+<app-info [topicId]="topicId"></app-info>
 <app-resources></app-resources>
+<app-quizzes></app-quizzes>
 
 <router-outlet></router-outlet>

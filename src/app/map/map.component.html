@@ -1,3 +1,24 @@
 <div id="map" leaflet [leafletOptions]="options" [leafletLayers]="markers">
 
 </div>
+<div class="controls">
+    <div class="control-set category">
+        <h3 id="category-label">Select A Category</h3>
+        <div class="btn-set">
+            <div id="{{ cat.id }}" class="btn" *ngFor="let cat of categories" (click)="categorySelected(cat.id, cat.data.name)">
+                <img src="assets/images/categories/{{ cat.data.image }}" alt="{{ cat.data.name }}">
+            </div>
+        </div>
+    </div>
+    <div class="control-set age">
+        <h3 id="age-label">Select An Age</h3>
+        <div class="btn-set">
+            <div id="{{ age.id }}" class="btn" *ngFor="let age of ages" (click)="ageSelected(age.id, age.data.name)">
+                <img src="assets/images/ages/{{ age.data.image }}" alt="{{ age.data.name }}">
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

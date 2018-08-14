@@ -1,4 +1,5 @@
 import { icon, tileLayer, latLng, latLngBounds } from "leaflet";
+import { identifierModuleUrl } from "@angular/compiler";
 
 const hwIcon = icon({
   iconSize: [25, 41],
@@ -15,7 +16,7 @@ const hwTitleLayer = tileLayer(
   {
     attribution:
       'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    id: "mapbox.pirates",
+    id: "mapbox.emerald",
     accessToken:
       "pk.eyJ1IjoiamFncnVhciIsImEiOiJjamtpbWU3b2cxM2EwM2ttejBpZG56MHM2In0.W0cVHc1hwbbqB4raAZsJWQ",
     maxZoom: 15,

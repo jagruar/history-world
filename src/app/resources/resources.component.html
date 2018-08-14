@@ -1,3 +1,39 @@
-<div class="container">
+<div id="resources-button" class="side-button white-box closed" (click)="toggleResources()">
+    <img src="assets/images/video.png">
+</div>
+<div id="resources" class="white-box content-tab hidden">
+    <h2 class="tab-header">Videos</h2>
+    <div class="video-selector">
+        <div class="thumbnails">
+            <div *ngFor="let res of resources" class="thumbnail">
+                <h3>{{res.name}}</h3>
+                <table>
+                    <tr>
+                        <th>Ratings</th>
+                        <td>{{res.ratings}}</td>
+                    </tr>
+                    <tr>
+                        <th>Fun</th>
+                        <td>
+                            <app-rating rating="{{res.fun}}"></app-rating>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Easy</th>
+                        <td>
+                            <app-rating rating="{{res.easy}}"></app-rating>
+                        </td>
+                    </tr>
+                </table>
+                <button (click)="showVideo(res.videoId)">Watch</button>
+            </div>
+
+        </div>
+        <div class="viewer">
+            <youtube-player [videoId]="id" (ready)="savePlayer($event)" (change)="onStateChange($event)"></youtube-player>
+            <div class="rating buttons">rating buttons</div>
+        </div>
+
+    </div>
 
 </div>

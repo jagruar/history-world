@@ -3,4 +3,46 @@
   margin: 0;
   border: 0;
   padding: 0;
+  font-family: museo-sans-rounded, sans-serif;
+}
+
+.white-box {
+  background-color: rgba(255, 253, 253, 0.7);
+  position: fixed;
+  z-index: 99;
+}
+
+.side-button {
+  height: 70px;
+  width: 80px;
+}
+
+.side-button:hover {
+  background-color: rgba(47, 218, 56, 0.7);
+}
+
+.open:hover {
+  background-color: rgba(218, 47, 47, 0.7);
+}
+
+.side-button img {
+  height: 40px;
+  padding: 15px 10px 0 20px;
+}
+
+.content-tab {
+  left: 80px;
+  right: 80px;
+  top: 100px;
+  bottom: 140px;
+}
+
+.hidden {
+  display: none;
+}
+
+.tab-header {
+  line-height: 70px;
+  width: 100%;
+  text-align: center;
 }

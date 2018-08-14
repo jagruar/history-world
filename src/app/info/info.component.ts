@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { TopicDataService } from "../services/topic-data.service";
+import { Topic } from "../models/topic";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-info",
@@ -6,11 +9,25 @@ import { Component, OnInit, Input } from "@angular/core";
   styleUrls: ["./info.component.css"]
 })
 export class InfoComponent implements OnInit {
-  @Input() topic: string;
-  description =
-    "The romans were beasts, they had sex with kids though. Naughty naughty";
+  topic: Observable<Topic>;
+  @Input() topicId: string;
 
-  constructor() {}
+  constructor(private context: TopicDataService) {}
 
-  ngOnInit() {}
+  toggleHidden($event) {
+    var div = $event.currentTarget;
+    div.classList.toggle("hidden");
+  }
+
+  formatYear(year: number) {
+    return year <= new Date().getFullYear() ? year : "present";
+  }
+
+  ngOnInit() {
+    this.topic = this.context.getTopic(this.topicId);
+  }
+
+  ngOnChanges() {
+    this.topic = this.context.getTopic(this.topicId);
+  }
 }

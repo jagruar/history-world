@@ -3,19 +3,45 @@
   z-index: 1;
 }
 
-/* :host {
+.controls {
+  width: 90%;
   position: fixed;
-  top: 0;
-  z-index: 1;
-  height: 90vh;
-} */
-
-.container {
-  background-color: lightgray;
-  height: 60vh;
-  width: 40%;
-  position: fixed;
-  left: 0;
-  top: 20vh;
+  margin-left: 5%;
+  bottom: 20px;
+  display: flex;
   z-index: 99;
+}
+
+.control-set {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+  margin: 0 1%;
+}
+
+.category {
+  align-items: flex-end;
+}
+
+.btn-set {
+  display: flex;
+}
+
+.btn {
+  width: 60px;
+  height: 60px;
+  background-color: black;
+  border-radius: 30px;
+  margin: 5px;
+  border: 1px solid black;
+}
+
+.btn img {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+}
+
+.btn:hover {
+  background-color: white;
 }
