@@ -23,9 +23,7 @@ export class InfoComponent implements OnInit {
     return year <= new Date().getFullYear() ? year : "present";
   }
 
-  ngOnInit() {
-    this.topic = this.context.getTopic(this.topicId);
-  }
+  ngOnInit() {}
 
   ngOnChanges() {
     this.topic = this.context.getTopic(this.topicId);

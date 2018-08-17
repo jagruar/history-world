@@ -9,6 +9,12 @@ import { map } from "rxjs/operators";
 import { Topic } from "../models/topic";
 import { Category } from "../models/category";
 import { Age } from "../models/age";
+import { Resource } from "../models/resource";
+import { Rating } from "../models/rating";
+
+const giggles = "giggles";
+const wows = "wows";
+const hmms = "hmms";
 
 @Injectable({
   providedIn: "root"
@@ -62,7 +68,7 @@ export class TopicDataService {
 
   getAges() {
     return this.database
-      .collection("ages")
+      .collection("ages", a => a.orderBy("order"))
       .snapshotChanges()
       .pipe(
         map(actions => {
@@ -74,4 +80,47 @@ export class TopicDataService {
         })
       );
   }
+
+  getResources(topicId) {
+    return this.database
+      .collection("resources", r => r.where("topicId", "==", topicId))
+      .valueChanges() as Observable<Resource[]>;
+  }
+
+  getGiggle(userId, videoId) {
+    var ratingId = userId + "_" + videoId;
+    return this.database
+      .doc(giggles + "/" + ratingId)
+      .valueChanges() as Observable<Rating>;
+  }
+
+
+  getRating(ratingType: string, id: string) {
+    return this.database
+      .doc(ratingType + "/" + id)
+      .valueChanges() as Observable<Rating>;
+  }
+
+  getRatings(userId, videoId) {
+    var ratingId = userId + "_" + videoId;
+    var ratings: Observable<Rating>[] = [];
+    ratings.push(this.getRating(giggles, ratingId));
+    ratings.push(this.getRating(wows, ratingId));
+    ratings.push(this.getRating(hmms, ratingId));
+    return ratings;
+  }
+
+  addRating(collection: string, userId: string, videoId: string) {
+    var ratingId = userId + "_" + videoId;
+    this.database.collection(collection).doc(ratingId).set({
+      property: true
+    });
+  }
+
+  removeRating(collection: string, userId: string, videoId: string) {
+    var ratingId = userId + "_" + videoId;
+    this.database.collection(collection).doc(ratingId).delete();
+  }
 }
+
+// userid_videoid = ratingid .....   6cqUUIZumESvhkHSIu9CucRzMSY2_X0zudTQelzI

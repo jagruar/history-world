@@ -8,11 +8,15 @@ import { InfoComponent } from "./info/info.component";
 import { ResourcesComponent } from "./resources/resources.component";
 import { AngularFireModule } from "angularfire2";
 import { AngularFirestoreModule } from "angularfire2/firestore";
+import { AngularFireAuthModule } from "angularfire2/auth";
 import { TopicDataService } from "./services/topic-data.service";
+import { AuthService } from "./services/auth.service";
 import { LeafletModule } from "@asymmetrik/ngx-leaflet";
 import { YoutubePlayerModule } from "ngx-youtube-player";
-import { RatingComponent } from './rating/rating.component';
-import { QuizzesComponent } from './quizzes/quizzes.component';
+import { RatingComponent } from "./rating/rating.component";
+import { QuizzesComponent } from "./quizzes/quizzes.component";
+import { UserComponent } from "./user/user.component";
+import { VideoComponent } from './video/video.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyAHWNq1jCURgA4cJt62zWyZdXARx-qSdfI",
@@ -24,7 +28,16 @@ var firebaseConfig = {
 };
 
 @NgModule({
-  declarations: [AppComponent, MapComponent, InfoComponent, ResourcesComponent, RatingComponent, QuizzesComponent],
+  declarations: [
+    AppComponent,
+    MapComponent,
+    InfoComponent,
+    ResourcesComponent,
+    RatingComponent,
+    QuizzesComponent,
+    UserComponent,
+    VideoComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,9 +45,10 @@ var firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
     LeafletModule.forRoot(),
-    YoutubePlayerModule
+    YoutubePlayerModule,
+    AngularFireAuthModule
   ],
-  providers: [TopicDataService],
+  providers: [TopicDataService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

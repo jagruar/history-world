@@ -1,5 +1,5 @@
 #resources-button {
-  top: 100px;
+  top: 185px;
 }
 
 .video-selector {
@@ -7,14 +7,25 @@
   text-align: center;
 }
 
-.thumbnails {
+.listing {
   width: 50%;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
 }
 
-.thumbnail {
+table {
+  width: 90%;
+  margin: 5%;
+}
+
+.td {
+  padding: 2px 5px;
+}
+
+.watch-button {
+  width: 60px;
+}
+
+.poo {
+  width: 150px;
   padding: 20px;
   margin: 20px;
   background-color: white;

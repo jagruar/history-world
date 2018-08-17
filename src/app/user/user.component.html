@@ -1,0 +1,24 @@
+<div id="user-button" class="side-button white-box" (click)="toggleUser()">
+  <img src="assets/images/account.png">
+</div>
+<div id="user" class="white-box content-tab hidden">
+  <h2 class="tab-header">Your Account</h2>
+  <div *ngIf="auth.user | async; then authenticated else guest" class="authenticate">
+    <!-- template will replace this div -->
+  </div>
+
+  <ng-template #guest>
+    <h3>Howdy, GUEST</h3>
+    <p>Login to get started...</p>
+    <button (click)="auth.googleLogin()">
+      <i class="fa fa-google"></i> Connect Google
+    </button>
+  </ng-template>
+
+  <ng-template #authenticated>
+    <div *ngIf="auth.user | async as user">
+      <h3>Howdy, {{ user.displayName }}</h3>
+      <button (click)="auth.signOut()">Logout</button>
+    </div>
+  </ng-template>
+</div>

@@ -1,3 +1,32 @@
 {
-  "indexes": []
+  "indexes": [
+    {
+      "collectionId": "resources",
+      "state": "READY",
+      "fields": [
+        {
+          "fieldPath": "topicId",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "ratings",
+          "mode": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionId": "resources",
+      "state": "READY",
+      "fields": [
+        {
+          "fieldPath": "topicId",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "ratings",
+          "mode": "DESCENDING"
+        }
+      ]
+    }
+  ]
 }

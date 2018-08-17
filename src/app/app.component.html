@@ -1,6 +1,7 @@
 <app-map (selectedEvent)="receiveSelected($event)"></app-map>
+<app-user></app-user>
 <app-info [topicId]="topicId"></app-info>
-<app-resources></app-resources>
-<app-quizzes></app-quizzes>
+<app-resources [topicId]="topicId"></app-resources>
+<app-quizzes [topicId]="topicId"></app-quizzes>
 
 <router-outlet></router-outlet>

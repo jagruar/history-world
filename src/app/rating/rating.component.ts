@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { TopicDataService } from "../services/topic-data.service";
+import { Observable } from "rxjs";
+import { Rating } from "../models/rating";
 
 @Component({
   selector: "app-rating",
@@ -6,25 +9,32 @@ import { Component, OnInit, Input } from "@angular/core";
   styleUrls: ["./rating.component.css"]
 })
 export class RatingComponent implements OnInit {
-  private route = "assets/images/";
-  @Input() rating: number;
-  stars = [];
+  giggle: Observable<Rating>;
+  wow: Observable<Rating>;
+  hmm: Observable<Rating>;
 
-  constructor() {}
+  @Input() userId: string;
+  @Input() videoId: string;
+
+  constructor(private context: TopicDataService) {}
 
   ngOnInit() {
-    var count = 0;
-    var rating = this.rating;
-    while (count < 5) {
-      if (rating < 0.25) {
-        this.stars.push(this.route + "empty-star.png");
-      } else if (rating < 0.75) {
-        this.stars.push(this.route + "half-star.png");
-      } else {
-        this.stars.push(this.route + "star.png");
-      }
-      rating -= 1;
-      count += 1;
-    }
   }
+
+  ngOnChanges() {
+    var ratings = this.context.getRatings(this.userId, this.videoId);
+    this.giggle = ratings[0];
+    this.wow = ratings[1];
+    this.hmm = ratings[2];
+  }
+
+  addRating(ratingType: string) {
+    this.context.addRating(ratingType, this.userId, this.videoId);
+  }
+
+  removeRating(ratingType: string) {
+    this.context.removeRating(ratingType, this.userId, this.videoId);
+  }
+
+  
 }
