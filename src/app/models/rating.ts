@@ -1,3 +1,3 @@
 export class Rating {
-  property: boolean;
+  resourceId: string;
 }

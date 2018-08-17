@@ -113,7 +113,7 @@ export class TopicDataService {
   addRating(collection: string, userId: string, videoId: string) {
     var ratingId = userId + "_" + videoId;
     this.database.collection(collection).doc(ratingId).set({
-      property: true
+      videoId: videoId
     });
   }
 
