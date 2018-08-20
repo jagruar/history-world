@@ -8,10 +8,15 @@ import { noTopicId } from "../models/holistory.constansts";
 })
 export class QuizzesComponent implements OnInit {
   @Input() topicId: string;
+  inQuiz: boolean = false;
 
   constructor() {}
 
   ngOnInit() {}
+
+  startQuiz() {
+    this.inQuiz = true;
+  }
 
   toggleQuizzes() {
     // hide all content tabs

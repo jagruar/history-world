@@ -3,5 +3,9 @@
 </div>
 <div id="quizzes" class="white-box content-tab hidden">
   <h2 class="tab-header">Quizzes</h2>
-  <h1 class="coming-soon">Coming Soon!</h1>
+  <div *ngIf="!inQuiz">
+    <p>Attempts Summary</p>
+    <button (click)="startQuiz()">Do Quiz</button>
+  </div>
+  <app-quiz *ngIf="inQuiz" [topicId]="topicId"></app-quiz>
 </div>

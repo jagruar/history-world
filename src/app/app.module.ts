@@ -17,6 +17,7 @@ import { RatingComponent } from "./rating/rating.component";
 import { QuizzesComponent } from "./quizzes/quizzes.component";
 import { UserComponent } from "./user/user.component";
 import { VideoComponent } from './video/video.component';
+import { QuizComponent } from './quiz/quiz.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyAHWNq1jCURgA4cJt62zWyZdXARx-qSdfI",
@@ -36,7 +37,8 @@ var firebaseConfig = {
     RatingComponent,
     QuizzesComponent,
     UserComponent,
-    VideoComponent
+    VideoComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,
