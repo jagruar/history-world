@@ -9,7 +9,7 @@ import { map } from "rxjs/operators";
 import { Topic } from "../models/topic";
 import { Category } from "../models/category";
 import { Age } from "../models/age";
-import { Resource } from "../models/resource";
+import { Video } from "../models/video";
 import { Rating } from "../models/rating";
 
 const giggles = "giggles";
@@ -34,21 +34,27 @@ export class TopicDataService {
     >;
   }
 
-  getTopics(categoryId: string, ageId: string) {
+  // getTopics(categoryId: string, ageId: string) {
+  //   return this.database
+  //     .collection("topics", t =>
+  //       t.where("categoryId", "==", categoryId).where("ageId", "==", ageId)
+  //     )
+  //     .snapshotChanges()
+  //     .pipe(
+  //       map(actions => {
+  //         return actions.map(a => {
+  //           const data = a.payload.doc.data() as Topic;
+  //           const id = a.payload.doc.id;
+  //           return { id, data };
+  //         });
+  //       })
+  //     );
+  // }
+
+  getTopics(categoryId: string) {
     return this.database
-      .collection("topics", t =>
-        t.where("categoryId", "==", categoryId).where("ageId", "==", ageId)
-      )
-      .snapshotChanges()
-      .pipe(
-        map(actions => {
-          return actions.map(a => {
-            const data = a.payload.doc.data() as Topic;
-            const id = a.payload.doc.id;
-            return { id, data };
-          });
-        })
-      );
+      .collection("topics", t => t.where("categoryId", "==", categoryId))
+      .valueChanges() as Observable<Topic[]>;
   }
 
   getCategories() {
@@ -81,10 +87,10 @@ export class TopicDataService {
       );
   }
 
-  getResources(topicId) {
+  getVideos(topicId) {
     return this.database
       .collection("resources", r => r.where("topicId", "==", topicId))
-      .valueChanges() as Observable<Resource[]>;
+      .valueChanges() as Observable<Video[]>;
   }
 
   getGiggle(userId, videoId) {

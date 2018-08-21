@@ -1,23 +1,43 @@
-ul {
-  list-style-type: none;
-  overflow: hidden;
-  background-color: #333;
+.menu {
+  display: flex;
+  flex-direction: column;
+  z-index: 99;
+  background-color: rgba(50, 50, 50);
+  position: absolute;
+  height: 100%;
+  width: 408px;
+  padding: 10px;
+  border-right: 5px solid lightgray;
 }
 
-li {
-  float: left;
+.widget {
+  padding: 10px;
+  background-color: white;
+  margin-top: 10px;
 }
 
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  line-height: 20px;
-  padding: 15px 16px;
-  text-decoration: none;
+.feature-buttons {
+  display: flex;
+  align-content: stretch;
+  background-color: white;
+  margin-top: 10px;
 }
 
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-  background-color: #111;
+.feature-button {
+  flex-grow: 1;
+  height: 40px;
+  background: no-repeat center;
+  background-size: contain; 
+}
+
+#user {
+  background-image: url('../assets/images/user.png');
+}
+
+#video {
+  background-image: url('../assets/images/video.png');
+}
+
+#quiz {
+  background-image: url('../assets/images/quiz.png');
 }

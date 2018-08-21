@@ -9,11 +9,27 @@ import { Topic } from "./models/topic";
 export class AppComponent {
   title = "history-world";
   topicId: string = "topicInfo";
+  videoActive: boolean = false;
+  quizActive: boolean = false;
 
   constructor(private ngZone: NgZone) {}
 
   receiveSelected($event) {
     this.topicId = $event;
     this.ngZone.run(() => true);
+  }
+
+  showVideo($event) {
+    alert($event);
+  }
+
+  videoClick() {
+    this.quizActive = false;
+    this.videoActive = !this.videoActive;
+  }
+
+  quizClick() {
+    this.videoActive = false;
+    this.quizActive = !this.quizActive;
   }
 }

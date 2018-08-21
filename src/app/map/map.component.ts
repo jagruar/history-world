@@ -2,6 +2,10 @@ import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { TopicDataService } from "../services/topic-data.service";
 import { marker } from "leaflet";
 import { hwIcon, hwOptions } from "./map.component.helper";
+import { Topic } from "../models/topic";
+import { SelectMultipleControlValueAccessor } from "../../../node_modules/@angular/forms";
+
+const gradient = 0.5;
 
 @Component({
   selector: "app-map",
@@ -9,58 +13,105 @@ import { hwIcon, hwOptions } from "./map.component.helper";
   styleUrls: ["./map.component.css"]
 })
 export class MapComponent implements OnInit {
-  selectedTopicId: number;
-  selectedCategoryId: string;
-  selectedAgeId: string;
+  year: number;
   options: {};
-  markers = [];
   categories = [];
-  ages = [];
+  topics: Topic[];
+  markers = [];
+  minYear = -5000;
+  maxYear: number;
+  orderMin = 0;
+  adjusting = false;
 
   @Output() selectedEvent = new EventEmitter<string>();
 
   constructor(private context: TopicDataService) {}
+  
+  ngOnInit() {
+    this.context.getCategories().subscribe(c => (this.categories = c));
+    this.options = hwOptions;
+    this.maxYear = new Date().getFullYear();
+    this.topics = [];
+    this.year = 200;
+  }
+  
+  categorySelected(id) {
+    this.context.getTopics(id).subscribe(t => this.topics = t);
+    this.setMarkers();    
+    this.orderMin -= 1;
+    document.getElementById(id).style.order = this.orderMin.toString();
+    document.getElementById("none").style.display = "none";
+    this.hideCategories();
+  }
 
-  updateTopics() {
-    if (
-      this.selectedAgeId != undefined &&
-      this.selectedCategoryId != undefined
-    ) {
-      this.markers = [];
-      this.context
-        .getTopics(this.selectedCategoryId, this.selectedAgeId)
-        .subscribe(t => {
-          var topics = t;
-          topics.forEach(t => {
-            this.markers.push(
-              marker([t.data.lat, t.data.long], {
-                icon: hwIcon,
-                title: t.id
-              }).on("click", $event => {
-                var topicId = $event.target.options.title;
-                this.selectedEvent.emit(topicId);
-              })
-            );
-          });
-        });
+  showCategories() {
+    document.getElementById("categories").classList.remove("hidden");
+  }
+
+  hideCategories() {
+    document.getElementById("categories").classList.add("hidden");
+  }
+
+  showYear() {
+    document.getElementById("year").classList.remove("hidden");
+  }
+
+  hideYear() {
+    document.getElementById("year").classList.add("hidden");
+  }
+
+  yearSet(value) {
+    this.year = parseInt(value);
+    this.setMarkers();
+  }
+
+  formatYear(year: string) {
+    if (parseInt(year) < 0) {
+      return " BC";
+    }
+    else {
+      return "AD";
     }
   }
 
-  categorySelected(id, name) {
-    document.getElementById("category-label").textContent = name;
-    this.selectedCategoryId = id;
-    this.updateTopics();
+  setMarkers() {
+    this.markers.pop();
+    for (let topic of this.topics) {
+      if (topic.start < this.year && topic.end > this.year) {
+        this.addMarker(topic);
+      }
+    }
   }
 
-  ageSelected(id, name) {
-    document.getElementById("age-label").textContent = name;
-    this.selectedAgeId = id;
-    this.updateTopics();
+  addMarker(topic: Topic) {
+    this.markers.push(
+      marker(
+        [topic.lat, topic.long], 
+        {icon: hwIcon, title: topic.topicId})
+      .on("click", $event => {
+        var topicId = $event.target.options.title;
+        this.selectedEvent.emit(topicId);
+      })
+    )
+  }
+  
+  sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  ngOnInit() {
-    this.context.getCategories().subscribe(c => (this.categories = c));
-    this.context.getAges().subscribe(c => (this.ages = c));
-    this.options = hwOptions;
+  async adjustYear(step, wait) {
+    this.adjusting = true;
+    while(this.adjusting) {
+      if (this.year < -5000) {
+        break;
+      }
+      this.year += step;
+      this.setMarkers();
+      await this.sleep(wait);
+    }    
+  }
+
+  stopAdjusting() {
+    this.adjusting = false;
   }
 }

@@ -1,4 +1,4 @@
-export class Resource {
+export class Video {
   topicId: string;
   videoId: string;
   name: string;

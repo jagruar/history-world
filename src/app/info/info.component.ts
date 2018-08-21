@@ -9,17 +9,13 @@ import { Observable } from "rxjs";
   styleUrls: ["./info.component.css"]
 })
 export class InfoComponent implements OnInit {
-  topic: Observable<Topic>;
   @Input() topicId: string;
+  topic: Observable<Topic>;  
 
   constructor(private context: TopicDataService) {}
 
-  toggleHidden($event) {
-    var div = $event.currentTarget;
-    div.classList.toggle("hidden");
-  }
-
   formatYear(year: number) {
+    // TODO: AD - BC
     return year <= new Date().getFullYear() ? year : "present";
   }
 

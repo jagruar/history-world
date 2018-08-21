@@ -1,7 +1,20 @@
+<div class="menu">
+    <h1 class="widget">Holistory.co.uk</h1>
+    <app-user class="widget"></app-user>
+    <app-info class="widget" [topicId]="topicId"></app-info>
+    <div class="feature-buttons">
+        <button id="video" class="feature-button" (click)="videoClick()"></button>
+        <button id="quiz" class="feature-button" (click)="quizClick()"></button>
+    </div>
+    <app-videos (videoSelected)="showVideo($event)" class="widget" *ngIf="videoActive" [topicId]="topicId"></app-videos>
+    <app-quizzes class="widget" *ngIf="quizActive" [topicId]="topicId"></app-quizzes>
+</div>
 <app-map (selectedEvent)="receiveSelected($event)"></app-map>
-<app-user></app-user>
-<app-info [topicId]="topicId"></app-info>
-<app-resources [topicId]="topicId"></app-resources>
-<app-quizzes [topicId]="topicId"></app-quizzes>
+<app-quiz *ngIf="quizReady" [topicId]="topicId"></app-quiz>
+<app-video *ngIf="videoReady"></app-video>
+
+
+
+
 
 <router-outlet></router-outlet>

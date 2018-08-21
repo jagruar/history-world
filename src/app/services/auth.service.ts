@@ -12,6 +12,7 @@ import { switchMap } from "rxjs/operators";
 interface User {
   uid: string;
   email: string;
+  photoURL?: string;
   displayName?: string;
 }
 
@@ -53,7 +54,8 @@ export class AuthService {
     const data: User = {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName
+      displayName: user.displayName,
+      photoURL: user.photoURL
     };
 
     return userRef.set(data, { merge: true });

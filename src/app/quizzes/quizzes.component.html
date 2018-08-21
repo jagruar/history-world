@@ -1,11 +1,1 @@
-<div id="quizzes-button" class="side-button white-box" (click)="toggleQuizzes()">
-  <img src="assets/images/quiz.png">
-</div>
-<div id="quizzes" class="white-box content-tab hidden">
-  <h2 class="tab-header">Quizzes</h2>
-  <div *ngIf="!inQuiz">
-    <p>Attempts Summary</p>
-    <button (click)="startQuiz()">Do Quiz</button>
-  </div>
-  <app-quiz *ngIf="inQuiz" [topicId]="topicId"></app-quiz>
-</div>
+<button (click)="startQuiz()">Do Quiz</button>

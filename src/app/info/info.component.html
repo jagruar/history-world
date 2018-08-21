@@ -1,11 +1,3 @@
-<div class="white-box info-menu" (click)="toggleHidden($event)">
-    <div class="info">
-        <img src="assets/images/icon.svg">
-        <h1>{{ (topic | async)?.name }}</h1>
-        <time>({{ formatYear((topic | async)?.start) }} ~ {{ formatYear((topic | async)?.end) }})</time>
-        <p>{{ (topic | async)?.description }}</p>
-    </div>
-    <div class="account-menu">
-        <img src="assets/images/account.png">
-    </div>
-</div>
+<h2>{{ (topic | async)?.name }}</h2>
+<time>({{ formatYear((topic | async)?.start) }} ~ {{ formatYear((topic | async)?.end) }})</time>
+<p>{{ (topic | async)?.description }}</p>

@@ -1,47 +1,74 @@
+:host {
+  position: absolute;
+  left: 408px;
+  right: 0;
+}
+
 #map {
   height: 100vh;
   z-index: 1;
 }
 
-.controls {
-  width: 90%;
-  position: fixed;
-  margin-left: 5%;
-  bottom: 20px;
-  display: flex;
+.control {
+  position: absolute;
+  background-color: rgba(0,0,0,0.8);
+  border: 5px solid lightgray;
+  border-radius: 20px;
+  left: 45px;
   z-index: 99;
+  overflow: hidden;
+  display: inline-flex;  
+  color: white;
+  text-align: center;
+  font-weight: 600;
+  align-items: center;
 }
 
-.control-set {
-  display: flex;
-  flex-direction: column;
-  width: 48%;
-  margin: 0 1%;
+.categories {
+  bottom: 20px;     
 }
 
-.category {
-  align-items: flex-end;
+.year {
+  bottom: 162px;
+  font-weight: 600;
 }
 
-.btn-set {
-  display: flex;
+.hidden {
+  width: 110px;
+}
+
+.year h2 {
+  width: 90px;
 }
 
 .btn {
-  width: 60px;
-  height: 60px;
-  background-color: black;
-  border-radius: 30px;
+  width: 90px;
+  padding: 5px;
   margin: 5px;
-  border: 1px solid black;
+  order: 0;
 }
 
 .btn img {
   width: 40px;
   height: 40px;
-  margin: 10px;
+  padding: 15px;
+  margin-left: 10px;
+  background: center url('../../assets/images/shield.png');
+  background-size: contain;
 }
 
-.btn:hover {
-  background-color: white;
+input {
+  margin: 0 10px;
+  width: 200px;
+}
+
+button {
+  height: 20px;
+  width: 40px;
+  margin: 0 5px;
+  background-color: rgba(0,0,0,0);
+  color: white;
+  font-weight: 900;
+  font-size: xx-large;
+  line-height: 20px;
 }

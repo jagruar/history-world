@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { DomSanitizer, SafeUrl } from "../../../node_modules/@angular/platform-browser";
+import { DomSanitizer, SafeUrl } from "@angular/platform-browser";
 import { TopicDataService } from "../services/topic-data.service";
 import { AuthService } from "../services/auth.service";
 

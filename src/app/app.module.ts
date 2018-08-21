@@ -5,7 +5,6 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { MapComponent } from "./map/map.component";
 import { InfoComponent } from "./info/info.component";
-import { ResourcesComponent } from "./resources/resources.component";
 import { AngularFireModule } from "angularfire2";
 import { AngularFirestoreModule } from "angularfire2/firestore";
 import { AngularFireAuthModule } from "angularfire2/auth";
@@ -18,6 +17,7 @@ import { QuizzesComponent } from "./quizzes/quizzes.component";
 import { UserComponent } from "./user/user.component";
 import { VideoComponent } from './video/video.component';
 import { QuizComponent } from './quiz/quiz.component';
+import { VideosComponent } from './videos/videos.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyAHWNq1jCURgA4cJt62zWyZdXARx-qSdfI",
@@ -33,12 +33,12 @@ var firebaseConfig = {
     AppComponent,
     MapComponent,
     InfoComponent,
-    ResourcesComponent,
     RatingComponent,
     QuizzesComponent,
     UserComponent,
     VideoComponent,
-    QuizComponent
+    QuizComponent,
+    VideosComponent
   ],
   imports: [
     BrowserModule,

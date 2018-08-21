@@ -1,0 +1,25 @@
+<table>
+  <tr>
+    <th></th>
+    <th>
+      <img class="rating-column" src="../../assets/images/ratings/giggle.png">
+    </th>
+    <th>
+      <img class="rating-column" src="../../assets/images/ratings/wow.png">
+    </th>
+    <th>
+      <img class="rating-column" src="../../assets/images/ratings/hmm.png">
+    </th>
+  </tr>
+  <tr class="video-row" *ngFor="let video of videos" (click)="showVideo(video.videoId)">
+    <td>
+      <p>
+        <strong>{{video.author}}</strong>
+      </p>
+      <p>{{video.name}}</p>
+    </td>
+    <td>{{video.giggles}}</td>
+    <td>{{video.wows}}</td>
+    <td>{{video.hmms}}</td>
+  </tr>
+</table>

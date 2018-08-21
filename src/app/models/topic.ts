@@ -1,4 +1,5 @@
 export class Topic {
+  topicId: string;
   categoryId: string;
   ageId: string;
   name: string;
