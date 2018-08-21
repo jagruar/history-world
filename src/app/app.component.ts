@@ -11,7 +11,9 @@ export class AppComponent {
   topicId: string = "topicInfo";
   videoActive: boolean = false;
   quizActive: boolean = false;
-
+  videoReady: boolean = false;
+  quizReady: boolean = false;
+  
   constructor(private ngZone: NgZone) {}
 
   receiveSelected($event) {

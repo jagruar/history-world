@@ -65,8 +65,8 @@ export class MapComponent implements OnInit {
     this.setMarkers();
   }
 
-  formatYear(year: string) {
-    if (parseInt(year) < 0) {
+  formatYear(year: number) {
+    if (year < 0) {
       return " BC";
     }
     else {
