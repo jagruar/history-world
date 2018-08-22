@@ -1,12 +1,13 @@
-<div class="rating giggle">
-  <button *ngIf="giggle | async" class="unrate button" (click)="removeRating('giggles')"></button>
-  <button *ngIf="!(giggle | async)" class="rate button" (click)="addRating('giggles')"></button>
+<div *ngIf="auth.user | async; then authenticated else guest" class="authenticate">
+  <!-- template will replace this div -->
 </div>
-<div class="rating wow">
-  <button *ngIf="wow | async" class="unrate button" (click)="removeRating('wows')"></button>
-  <button *ngIf="!(wow | async)" class="rate button" (click)="addRating('wows')"></button>
-</div>
-<div class="rating hmm">
-  <button *ngIf="hmm | async" class="unrate button" (click)="removeRating('hmms')"></button>
-  <button *ngIf="!(hmm | async)" class="rate button" (click)="addRating('hmms')"></button>
-</div>
+
+<ng-template #guest>
+  <p>Log in to rate this video</p>
+</ng-template>
+
+<ng-template #authenticated>
+  <div id="giggles" class="rating" (click)="toggleRating($event)"></div>
+  <div id="wows" class="rating" (click)="toggleRating($event)"></div>
+  <div id="hmms" class="rating" (click)="toggleRating($event)"></div>
+</ng-template>

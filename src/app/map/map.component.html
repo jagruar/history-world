@@ -1,16 +1,18 @@
 <div id="map" leaflet [leafletOptions]="options" [leafletLayers]="markers"></div>
+
 <div id="categories" class="categories control hidden" (mouseenter)="showCategories()" (mouseleave)="hideCategories()">
-    <div id="none" class="btn">
-        <img src="assets/images/categories/none.png">
-        <p>None</p>
+    <div id="activeCategory" class="btn" (click)="toggleCategories()">
+        <img id="activeImg" src="assets/images/categories/none.png">
+        <p id="activeP">None</p>
     </div>
-    <div id="{{ cat.id }}" class="btn" *ngFor="let cat of categories" (click)="categorySelected(cat.id)">
-        <img src="assets/images/categories/{{ cat.data.image }}" alt="{{ cat.name }}">
+    <div id="{{ cat.id }}" class="btn" *ngFor="let cat of categories" (click)="categorySelected(cat.id, cat.data)">
+        <img src="assets/images/categories/{{ cat.data.image }}" alt="{{ cat.data.name }}">
         <p>{{ cat.data.name }}</p>
     </div>
 </div>
+
 <div id="year" class="year control hidden" (mouseenter)="showYear()" (mouseleave)="hideYear()">
-    <div class="btn">
+    <div class="btn" (click)="toggleYear()">
         <h2>{{ year }}</h2>
         <h3>{{ formatYear(year) }}</h3>
     </div>

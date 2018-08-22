@@ -9,7 +9,7 @@ import {
 import { Observable, of } from "rxjs";
 import { switchMap } from "rxjs/operators";
 
-interface User {
+export interface User {
   uid: string;
   email: string;
   photoURL?: string;

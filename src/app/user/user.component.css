@@ -5,6 +5,26 @@
 }
 
 .user-bar {
+  color: white;
   display: flex;
-  background-color: white;
+  align-content: center;
+  justify-content: space-evenly;
+}
+
+p {
+  font-size: large;
+  font-weight: 700;
+  margin: auto 0;
+}
+
+button {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  padding: 10px;
+  color: rgb(50,50,50);
+  font-weight: bolder;
+  background: rgb(252, 178, 41) url(../../assets/images/logout.png) center no-repeat;
+  background-size: 50%;
+  font-family: museo-sans-rounded, sans-serif;
 }

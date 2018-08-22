@@ -9,11 +9,12 @@ import { Topic } from "./models/topic";
 export class AppComponent {
   title = "history-world";
   topicId: string = "topicInfo";
+  videoId: string;
   videoActive: boolean = false;
   quizActive: boolean = false;
   videoReady: boolean = false;
   quizReady: boolean = false;
-  
+
   constructor(private ngZone: NgZone) {}
 
   receiveSelected($event) {
@@ -22,7 +23,12 @@ export class AppComponent {
   }
 
   showVideo($event) {
-    alert($event);
+    this.videoId = $event;
+    this.videoReady = true;
+  }
+
+  closeVideo() {
+    this.videoReady = false;
   }
 
   videoClick() {
@@ -33,5 +39,13 @@ export class AppComponent {
   quizClick() {
     this.videoActive = false;
     this.quizActive = !this.quizActive;
+  }
+
+  buttonDown($event) {
+    $event.target.classList.add("down")
+  }
+
+  buttonUp($event) {
+    $event.target.classList.remove("down")
   }
 }

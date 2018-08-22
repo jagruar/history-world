@@ -15,7 +15,9 @@ export class VideosComponent implements OnInit {
 
   constructor(public auth: AuthService, private context: TopicDataService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.videos = [];
+  }
 
   ngOnChanges() {
     this.context

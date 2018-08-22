@@ -14,8 +14,8 @@ tr {
 }
 
 .video-row:hover {
-    background-color: rgb(0, 102, 255);
-    color: white;
+    background-color: rgb(252, 178, 41);
+    color: rgb(50,50,50);
 }
 
 

@@ -1,4 +1,6 @@
-<table>
+<p *ngIf="videos.length == 0">
+  There are no videos for this topic, check back soon</p>
+<table *ngIf="videos.length > 0">
   <tr>
     <th></th>
     <th>
